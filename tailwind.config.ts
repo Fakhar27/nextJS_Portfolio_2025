@@ -18,6 +18,9 @@ const config: Config = {
         hackdaddy: ["Hackdaddy", "monospace"],
         hackout: ["Hackout-BawS", "sans-serif"],
       },
+      animation: {
+        'spin-slow': 'spin 20s linear infinite',
+      },
     },
   },
   plugins: [],
