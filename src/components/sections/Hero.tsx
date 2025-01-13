@@ -14,7 +14,8 @@ export default function Hero() {
     words: [
       "Software Engineer",
       "Cloud Architect",
-      "Application Developer"
+      "Application Developer",
+      "abc"
     ],
     loop: true,
     delaySpeed: 2000,
