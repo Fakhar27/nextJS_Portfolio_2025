@@ -189,7 +189,7 @@ const Hero: React.FC = () => {
             <div className="flex flex-col items-center text-center md:items-start md:text-left md:w-1/2">
               <motion.h1 
                 variants={itemVariants}
-                className="font-hackdaddy mb-4 text-4xl text-white md:text-4xl lg:text-4xl"
+                className="font-hackdaddy mb-4 text-4xl text-white md:text-2xl lg:text-3xl"
               >
                 Fakhar ul mursaleen
               </motion.h1>
