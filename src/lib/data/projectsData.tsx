@@ -11,7 +11,7 @@ export interface Project {
     {
       id: '1',
       title: 'MyConsultor',
-      description: 'An AI-powered legal consultation chatbot leveraging Spanish BOE APIs to provide up-to-date guidance on tax regulations and legal matters.',
+      description: 'AI legal consultation chatbot using Spanish BOE APIs for instant tax and legal guidance.',
       stack: [
         'FlutterFlow',
         'GCP Cloud Functions',
@@ -31,7 +31,7 @@ export interface Project {
     {
       id: '2',
       title: 'ProGen',
-      description: 'AI-driven content creation platform that transforms text prompts into engaging short-form videos by combining automated voice-overs with AI-generated visuals.',
+      description: 'AI platform converts prompts to short videos with automated voice-overs and AI visuals',
       stack: [
         'Django',
         'Next.js',
@@ -52,7 +52,7 @@ export interface Project {
     {
       id: '3',
       title: 'i Diet',
-      description: 'Smart diet planning system that leverages AI to generate personalized weekly meal plans based on individual fitness goals and preferences.',
+      description: 'AI-powered meal planning system generating weekly plans based on fitness goals',
       stack: [
         'Next.js',
         'NextAuth',
@@ -72,7 +72,7 @@ export interface Project {
     {
       id: '4',
       title: 'YelpCamp',
-      description: 'Interactive platform for discovering and sharing campsite locations, featuring real-time mapping and cloud-based image management.',
+      description: 'Campsite discovery platform with real-time mapping and cloud image management.',
       stack: [
         'React',
         'Node.js',
@@ -93,7 +93,7 @@ export interface Project {
     {
       id: '5',
       title: 'Enterprise Registration System',
-      description: 'Comprehensive content management system facilitating B2B and B2P interactions with cloud-based document handling.',
+      description: 'B2B/B2P content management system with cloud-based document handling',
       stack: [
         'Django',
         'MongoDB',
@@ -116,7 +116,7 @@ export interface Project {
     {
       id: '6',
       title: 'Pharmacy Management System',
-      description: 'Cloud-based pharmacy operations platform streamlining inventory management and digital prescription processing.',
+      description: 'Cloud pharmacy platform for inventory and digital prescription management.',
       stack: [
         'Django',
         'Bootstrap',

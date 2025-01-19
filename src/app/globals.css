@@ -40,3 +40,7 @@
   height: 100%;
   will-change: transform;
 }
+
+.scrolling-horizontally {
+  overflow: hidden !important;
+}
