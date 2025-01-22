@@ -1,345 +1,4 @@
-// // components/sections/Bio.tsx
-// import React, { useRef, useEffect } from 'react';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// export default function Bio() {
-//   const containerRef = useRef(null);
-
-//   useEffect(() => {
-//     const ctx = gsap.context(() => {
-//       const titleAnimation = gsap.timeline({
-//         scrollTrigger: {
-//           trigger: containerRef.current,
-//           start: "100 bottom",
-//           end: "center bottom",
-//           toggleActions: "play none none reverse",
-//         },
-//       });
-
-//       titleAnimation.to(
-//         ".animated-word",
-//         {
-//           opacity: 1,
-//           transform: "translate3d(0, 0, 0) rotateY(0deg) rotateX(0deg)",
-//           ease: "power2.inOut",
-//           stagger: 0.02,
-//         },
-//         0
-//       );
-//     }, containerRef);
-
-//     return () => ctx.revert();
-//   }, []);
-
-//   const bioText = [
-//     "Innovative Software Engineer specializing in Full-Stack Development",
-//     "with expertise in AI-driven solutions and cloud architecture.",
-//     "Focused on creating intelligent applications that leverage",
-//     "cutting-edge AI/ML technologies, advanced automation pipelines,",
-//     "and enterprise-grade cloud infrastructure to deliver",
-//     "scalable, secure, and high-performance solutions."
-//   ];
-
-//   return (
-//     <section className="relative min-h-screen bg-slate-950 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-//       <div ref={containerRef} className="max-w-4xl mx-auto">
-//         {bioText.map((line, index) => (
-//           <div
-//             key={index}
-//             className="flex flex-wrap justify-center lg:justify-start gap-2 mb-2"
-//           >
-//             {line.split(" ").map((word, idx) => (
-//               <span
-//                 key={idx}
-//                 className="animated-word inline-block opacity-0 font-wilson text-lg sm:text-xl lg:text-2xl text-gray-300"
-//                 style={{
-//                   transform: 'translate3d(0, 50px, 0) rotateY(10deg) rotateX(10deg)',
-//                 }}
-//               >
-//                 {word}&nbsp;
-//               </span>
-//             ))}
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
-
-
-// import React, { useRef, useEffect } from 'react';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// export default function Bio() {
-//   const containerRef = useRef(null);
-
-//   useEffect(() => {
-//     const ctx = gsap.context(() => {
-//       const gradientLines = document.querySelectorAll('.animated-word');
-//       gradientLines.forEach((line) => {
-//         gsap.fromTo(
-//           line,
-//           {
-//             backgroundPositionX: "100%",
-//           },
-//           {
-//             backgroundPositionX: "0%",
-//             ease: "none",
-//             scrollTrigger: {
-//               trigger: line,
-//               start: "100 bottom",
-//               markers:true,
-//               end: "center bottom",
-//               toggleActions: "play none none reverse",
-//               scrub: 1,
-//             }
-//           }
-//         );
-//       });
-//     }, containerRef);
-
-//     return () => ctx.revert();
-//   }, []);
-
-//   const bioText = [
-//     "Innovative Software Engineer specializing in Full-Stack Development",
-//     "with expertise in AI-driven solutions and cloud architecture.",
-//     "Focused on creating intelligent applications that leverage",
-//     "cutting-edge AI/ML technologies, advanced automation pipelines,",
-//     "and enterprise-grade cloud infrastructure to deliver",
-//     "scalable, secure, and high-performance solutions."
-//   ];
-
-//   return (
-//     <section className="relative min-h-screen bg-slate-950 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-//       <div ref={containerRef} className="max-w-4xl mx-auto">
-//         {bioText.map((line, index) => (
-//           <div
-//             key={index}
-//             className="flex flex-wrap justify-center lg:justify-start gap-2 mb-2"
-//           >
-//             {line.split(" ").map((word, idx) => (
-//               <span
-//                 key={idx}
-//                 className="animated-word inline-block font-wilson text-lg sm:text-xl lg:text-2xl"
-//                 style={{
-//                   background: 'linear-gradient(to right, #ffffff 50%, #252525 50%)',
-//                   backgroundSize: '200% 100%',
-//                   backgroundPositionX: '100%',
-//                   color: 'transparent',
-//                   backgroundClip: 'text',
-//                   WebkitBackgroundClip: 'text',
-//                   WebkitTextFillColor: 'transparent',
-//                 }}
-//               >
-//                 {word}&nbsp;
-//               </span>
-//             ))}
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-// import React, { useRef, useEffect } from 'react';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// export default function Bio() {
-//   const containerRef = useRef(null);
-
-//   useEffect(() => {
-//     // Initialize animations with a delay
-//     const animations = () => {
-//       // Ensure words are visible initially
-//       gsap.set('.animated-word', { 
-//         opacity: 1,
-//         backgroundPositionX: "100%" 
-//       });
-
-//       // Animate each word
-//       const words = document.querySelectorAll('.animated-word');
-//       words.forEach((word, index) => {
-//         gsap.to(word, {
-//           backgroundPositionX: "0%",
-//           duration: 1,
-//           delay: index * 0.02, // Stagger effect
-//           ease: "power3.out",
-//           scrollTrigger: {
-//             trigger: containerRef.current,
-//             start: "top bottom-=100",
-//             end: "top center",
-//             toggleActions: "play none none reverse",
-//             markers: true,
-//           }
-//         });
-//       });
-//     };
-
-//     // Small delay to ensure DOM is ready
-//     const timer = setTimeout(animations, 100);
-
-//     return () => {
-//       clearTimeout(timer);
-//       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-//     };
-//   }, []);
-
-//   const bioText = [
-//     "Innovative Software Engineer specializing in Full-Stack Development",
-//     "with expertise in AI-driven solutions and cloud architecture.",
-//     "Focused on creating intelligent applications that leverage",
-//     "cutting-edge AI/ML technologies, advanced automation pipelines,",
-//     "and enterprise-grade cloud infrastructure to deliver",
-//     "scalable, secure, and high-performance solutions."
-//   ];
-
-//   return (
-//     <section className="relative min-h-screen bg-slate-950 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-//       <div ref={containerRef} className="max-w-4xl mx-auto">
-//         {bioText.map((line, index) => (
-//           <div
-//             key={index}
-//             className="flex flex-wrap justify-center lg:justify-start gap-2 mb-2"
-//           >
-//             {line.split(" ").map((word, idx) => (
-//               <span
-//                 key={idx}
-//                 className="animated-word inline-block font-wilson text-lg sm:text-xl lg:text-2xl"
-//                 style={{
-//                   opacity: 0,
-//                   background: 'linear-gradient(to right, #ffffff 50%, #252525 50%)',
-//                   backgroundSize: '200% 100%',
-//                   backgroundPositionX: '100%',
-//                   color: 'transparent',
-//                   backgroundClip: 'text',
-//                   WebkitBackgroundClip: 'text',
-//                   WebkitTextFillColor: 'transparent',
-//                 }}
-//               >
-//                 {word}&nbsp;
-//               </span>
-//             ))}
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-// import React, { useRef, useEffect } from 'react';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// export default function Bio() {
-//   const containerRef = useRef(null);
-
-//   useEffect(() => {
-//     const animations = () => {
-//       // Get all line containers
-//       const lineContainers = document.querySelectorAll('.bio-line');
-      
-//       lineContainers.forEach((line, lineIndex) => {
-//         // Get all words in this line
-//         const words = line.querySelectorAll('.animated-word');
-        
-//         // Set initial state for words in this line
-//         gsap.set(words, { 
-//           opacity: 1,
-//           backgroundPositionX: "100%" 
-//         });
-
-//         // Animate words in this line
-//         words.forEach((word, wordIndex) => {
-//           gsap.to(word, {
-//             backgroundPositionX: "0%",
-//             duration: 1,
-//             delay: wordIndex * 0.05, // Stagger effect within each line
-//             ease: "power3.out",
-//             scrollTrigger: {
-//               trigger: line,
-//               start: "top bottom-=100",
-//               end: "top center",
-//               toggleActions: "play none none reverse",
-//               markers: true,
-//             }
-//           });
-//         });
-//       });
-//     };
-
-//     const timer = setTimeout(animations, 100);
-
-//     return () => {
-//       clearTimeout(timer);
-//       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-//     };
-//   }, []);
-
-//   const bioText = [
-//     "Innovative Software Engineer specializing in Full-Stack Development",
-//     "with expertise in AI-driven solutions and cloud architecture.",
-//     "Focused on creating intelligent applications that leverage",
-//     "cutting-edge AI/ML technologies, advanced automation pipelines,",
-//     "and enterprise-grade cloud infrastructure to deliver",
-//     "scalable, secure, and high-performance solutions."
-//   ];
-
-//   return (
-//     <section className="relative min-h-screen bg-slate-950 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-//       <div ref={containerRef} className="max-w-4xl mx-auto">
-//         {bioText.map((line, index) => (
-//           <div
-//             key={index}
-//             className="bio-line flex flex-wrap justify-center lg:justify-start gap-2 mb-4"
-//           >
-//             {line.split(" ").map((word, idx) => (
-//               <span
-//                 key={idx}
-//                 className="animated-word inline-block font-wilson text-lg sm:text-xl lg:text-2xl"
-//                 style={{
-//                   opacity: 0,
-//                   background: 'linear-gradient(to right, #ffffff 50%, #252525 50%)',
-//                   backgroundSize: '200% 100%',
-//                   backgroundPositionX: '100%',
-//                   color: 'transparent',
-//                   backgroundClip: 'text',
-//                   WebkitBackgroundClip: 'text',
-//                   WebkitTextFillColor: 'transparent',
-//                 }}
-//               >
-//                 {word}&nbsp;
-//               </span>
-//             ))}
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
-
-
+'use client'
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -415,7 +74,6 @@ export default function Bio() {
         </h2>
       </div> */}
 
-      {/* Bio Content */}
       <div ref={containerRef} className="max-w-4xl mx-auto">
         {bioText.map((line, index) => (
           <div
@@ -425,11 +83,10 @@ export default function Bio() {
             {line.split(" ").map((word, idx) => (
               <span
                 key={idx}
-                // className="animated-word inline-block font-hackdaddy text-lg sm:text-xl lg:text-2xl"
                 className="animated-word inline-block font-hackdaddy text-lg sm:text-xs lg:text-xl"
                 style={{
                   opacity: 0,
-                  background: 'linear-gradient(to right, #60A5FA 50%, #1F2937 50%)', // blue-400 to gray-800
+                  background: 'linear-gradient(to right, #60A5FA 50%, #1F2937 50%)', 
                   backgroundSize: '200% 100%',
                   backgroundPositionX: '100%',
                   color: 'transparent',
@@ -447,3 +104,76 @@ export default function Bio() {
     </section>
   );
 }
+
+
+
+// // components/sections/Bio.tsx
+// import React, { useRef, useEffect } from 'react';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// export default function Bio() {
+//   const containerRef = useRef(null);
+
+//   useEffect(() => {
+//     const ctx = gsap.context(() => {
+//       const titleAnimation = gsap.timeline({
+//         scrollTrigger: {
+//           trigger: containerRef.current,
+//           start: "100 bottom",
+//           end: "center bottom",
+//           toggleActions: "play none none reverse",
+//         },
+//       });
+
+//       titleAnimation.to(
+//         ".animated-word",
+//         {
+//           opacity: 1,
+//           transform: "translate3d(0, 0, 0) rotateY(0deg) rotateX(0deg)",
+//           ease: "power2.inOut",
+//           stagger: 0.02,
+//         },
+//         0
+//       );
+//     }, containerRef);
+
+//     return () => ctx.revert();
+//   }, []);
+
+//   const bioText = [
+//     "Innovative Software Engineer specializing in Full-Stack Development",
+//     "with expertise in AI-driven solutions and cloud architecture.",
+//     "Focused on creating intelligent applications that leverage",
+//     "cutting-edge AI/ML technologies, advanced automation pipelines,",
+//     "and enterprise-grade cloud infrastructure to deliver",
+//     "scalable, secure, and high-performance solutions."
+//   ];
+
+//   return (
+//     <section className="relative min-h-screen bg-slate-950 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+//       <div ref={containerRef} className="max-w-4xl mx-auto">
+//         {bioText.map((line, index) => (
+//           <div
+//             key={index}
+//             className="flex flex-wrap justify-center lg:justify-start gap-2 mb-2"
+//           >
+//             {line.split(" ").map((word, idx) => (
+//               <span
+//                 key={idx}
+//                 className="animated-word inline-block opacity-0 font-wilson text-lg sm:text-xl lg:text-2xl text-gray-300"
+//                 style={{
+//                   transform: 'translate3d(0, 50px, 0) rotateY(10deg) rotateX(10deg)',
+//                 }}
+//               >
+//                 {word}&nbsp;
+//               </span>
+//             ))}
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }

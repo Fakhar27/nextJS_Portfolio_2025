@@ -26,7 +26,7 @@ export interface Project {
         '/project/myConsultor/Screenshot (1651).png',
         '/project/myConsultor/Screenshot (1652).png'
       ],
-      link: "https://github.com/",
+      link: "https://myconsultor.flutterflow.app/",
     },
     {
       id: '2',
@@ -47,7 +47,7 @@ export interface Project {
         '/project/fyp/Screenshot (1017).png',
         '/project/fyp/Screenshot (1018).png',
       ],
-      link: "https://github.com/",
+      link: "https://github.com/Fakhar27/GenAI_Backend",
     },
     {
       id: '3',
@@ -67,7 +67,7 @@ export interface Project {
         '/project/dietAutomation/Screenshot (1641).png',
         '/project/dietAutomation/Screenshot (1643).png'
       ],
-      link: "https://github.com/",
+      link: "https://github.com/Fakhar27/nextjs_Typescript_Automation/tree/main/automation",
     },
     {
       id: '4',
@@ -88,7 +88,7 @@ export interface Project {
         '/project/yelp/screenshot (251).png',
         '/project/yelp/screenshot (252).png',
       ],
-      link: "https://github.com/",
+      link: "https://github.com/Fakhar27/YelpCamp",
     },
     {
       id: '5',
@@ -111,7 +111,7 @@ export interface Project {
         '/project/nlcRegistration/Screenshot (1633).png',
         '/project/nlcRegistration/Screenshot (1634).png'
       ],
-      link: "https://github.com/",
+      link: "https://github.com/Fakhar27/Enterprise-Establishment-and-Authorization-System",
     },
     {
       id: '6',
@@ -132,6 +132,6 @@ export interface Project {
         '/project/pharmacy/Screenshot (76).png',
         '/project/pharmacy/Screenshot (77).png'
       ],
-      link: "https://github.com/",
+      link: "https://github.com/Fakhar27/Pharmacy_Management_System",
     }
   ];

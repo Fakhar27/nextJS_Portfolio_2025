@@ -6,7 +6,6 @@ import { useTypewriter } from 'react-simple-typewriter';
 import { gsap } from 'gsap';
 import { Github, Linkedin, FileDown, LucideIcon } from 'lucide-react';
 
-// Type definitions
 interface ShinyButtonProps {
   onClick: () => void;
   children: React.ReactNode;
@@ -18,14 +17,13 @@ interface SocialLink {
   label: string;
 }
 
-// Animation variants
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.3, // Increased delay between elements
+      staggerChildren: 0.3, 
       duration: 0.7
     }
   }
@@ -44,7 +42,7 @@ const itemVariants: Variants = {
 };
 
 const profileVariants: Variants = {
-  hidden: { opacity: 0, x: 100 }, // Start from right
+  hidden: { opacity: 0, x: 100 },
   visible: {
     opacity: 1,
     x: 0,
