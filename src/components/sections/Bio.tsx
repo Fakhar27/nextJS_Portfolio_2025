@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -6,15 +7,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Bio() {
-  const containerRef = useRef(null);
-  const titleRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const animations = () => {
-      const lineContainers = document.querySelectorAll('.bio-line');
+      const lineContainers = document.querySelectorAll<HTMLElement>('.bio-line');
       
       lineContainers.forEach((line) => {
-        const words = line.querySelectorAll('.animated-word');
+        const words = line.querySelectorAll<HTMLElement>('.animated-word');
         
         gsap.set(words, { 
           opacity: 1,
@@ -32,17 +32,20 @@ export default function Bio() {
               start: "top bottom-=100",
               end: "top center",
               toggleActions: "play none none reverse",
-            //   markers: true,
             }
           });
         });
       });
     };
 
-    const timer = setTimeout(animations, 100);
+    // Create context for proper cleanup
+    const ctx = gsap.context(() => {
+      const timer = setTimeout(animations, 100);
+      return () => clearTimeout(timer);
+    }, containerRef);
 
     return () => {
-      clearTimeout(timer);
+      ctx.revert(); // This will clean up all GSAP animations
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -58,22 +61,6 @@ export default function Bio() {
 
   return (
     <section className="relative min-h-screen bg-slate-950 flex flex-col justify-center px-4 sm:px-6 lg:px-8">
-      {/* Title with layered glow effect */}
-      {/* <div className="relative mb-12 text-center">
-        <h2 
-          ref={titleRef}
-          className="relative inline-block font-hackdaddy text-3xl md:text-4xl lg:text-5xl font-bold"
-          style={{ opacity: 0 }}
-        >
-          <span className="relative z-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-            About Me
-          </span>
-          <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-[2px] opacity-70 animate-pulse-slow bg-clip-text text-transparent">
-            About Me
-          </span>
-        </h2>
-      </div> */}
-
       <div ref={containerRef} className="max-w-4xl mx-auto">
         {bioText.map((line, index) => (
           <div
@@ -83,17 +70,7 @@ export default function Bio() {
             {line.split(" ").map((word, idx) => (
               <span
                 key={idx}
-                className="animated-word inline-block font-hackdaddy text-lg sm:text-xs lg:text-xl"
-                style={{
-                  opacity: 0,
-                  background: 'linear-gradient(to right, #60A5FA 50%, #1F2937 50%)', 
-                  backgroundSize: '200% 100%',
-                  backgroundPositionX: '100%',
-                  color: 'transparent',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
+                className="animated-word inline-block font-hackdaddy text-lg sm:text-xs lg:text-xl opacity-0 bg-gradient-text"
               >
                 {word}&nbsp;
               </span>
@@ -104,6 +81,115 @@ export default function Bio() {
     </section>
   );
 }
+
+
+// 'use client'
+// import React, { useRef, useEffect } from 'react';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// export default function Bio() {
+//   const containerRef = useRef(null);
+//   const titleRef = useRef(null);
+
+//   useEffect(() => {
+//     const animations = () => {
+//       const lineContainers = document.querySelectorAll('.bio-line');
+      
+//       lineContainers.forEach((line) => {
+//         const words = line.querySelectorAll('.animated-word');
+        
+//         gsap.set(words, { 
+//           opacity: 1,
+//           backgroundPositionX: "100%" 
+//         });
+
+//         words.forEach((word, wordIndex) => {
+//           gsap.to(word, {
+//             backgroundPositionX: "0%",
+//             duration: 1,
+//             delay: wordIndex * 0.2,
+//             ease: "power3.out",
+//             scrollTrigger: {
+//               trigger: line,
+//               start: "top bottom-=100",
+//               end: "top center",
+//               toggleActions: "play none none reverse",
+//             //   markers: true,
+//             }
+//           });
+//         });
+//       });
+//     };
+
+//     const timer = setTimeout(animations, 100);
+
+//     return () => {
+//       clearTimeout(timer);
+//       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+//     };
+//   }, []);
+
+//   const bioText = [
+//     "Innovative Software Engineer specializing in Full-Stack Development",
+//     "with expertise in AI-driven solutions and cloud architecture.",
+//     "Focused on creating intelligent applications that leverage",
+//     "cutting-edge AI/ML technologies, advanced automation pipelines,",
+//     "and enterprise-grade cloud infrastructure to deliver",
+//     "scalable, secure, and high-performance solutions."
+//   ];
+
+//   return (
+//     <section className="relative min-h-screen bg-slate-950 flex flex-col justify-center px-4 sm:px-6 lg:px-8">
+//       {/* Title with layered glow effect */}
+//       {/* <div className="relative mb-12 text-center">
+//         <h2 
+//           ref={titleRef}
+//           className="relative inline-block font-hackdaddy text-3xl md:text-4xl lg:text-5xl font-bold"
+//           style={{ opacity: 0 }}
+//         >
+//           <span className="relative z-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+//             About Me
+//           </span>
+//           <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-[2px] opacity-70 animate-pulse-slow bg-clip-text text-transparent">
+//             About Me
+//           </span>
+//         </h2>
+//       </div> */}
+
+//       <div ref={containerRef} className="max-w-4xl mx-auto">
+//         {bioText.map((line, index) => (
+//           <div
+//             key={index}
+//             className="bio-line flex flex-wrap justify-center lg:justify-start gap-2 mb-4"
+//           >
+//             {line.split(" ").map((word, idx) => (
+//               <span
+//                 key={idx}
+//                 // className="animated-word inline-block font-hackdaddy text-lg sm:text-xs lg:text-xl"
+//                 className="animated-word inline-block font-hackdaddy text-lg sm:text-xs lg:text-xl opacity-0 bg-gradient-text"
+//                 // style={{
+//                 //   opacity: 0,
+//                 //   background: 'linear-gradient(to right, #60A5FA 50%, #1F2937 50%)', 
+//                 //   backgroundSize: '200% 100%',
+//                 //   backgroundPositionX: '100%',
+//                 //   color: 'transparent',
+//                 //   backgroundClip: 'text',
+//                 //   WebkitBackgroundClip: 'text',
+//                 //   WebkitTextFillColor: 'transparent',
+//                 // }}
+//               >
+//                 {word}&nbsp;
+//               </span>
+//             ))}
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 
 
 

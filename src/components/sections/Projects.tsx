@@ -54,9 +54,11 @@ export default function Projects() {
   }, []);
 
   return (
+//     <div ref={titleRef} className="relative mb-6 text-center lg:text-left opacity-0">
+// <div ref={descRef} className="opacity-0"></div>
     <section className='relative flex flex-col w-full min-h-screen bg-slate-950'>
       <div className='lg:sticky lg:top-0 p-6 lg:p-8 w-full'>
-        <div ref={titleRef} className="relative mb-6 text-center lg:text-left" style={{ opacity: 0 }}>
+        <div ref={titleRef} className="relative mb-6 text-center lg:text-left opacity-0">
           <h2 className="relative inline-block font-hackdaddy text-3xl md:text-4xl lg:text-5xl font-bold">
             <span className="relative z-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
               Projects
@@ -66,7 +68,7 @@ export default function Projects() {
             </span>
           </h2>
         </div>
-        <div ref={descRef} style={{ opacity: 0 }}>
+        <div ref={descRef} className='opacity-0'>
           <p className='font-wilson text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-2xl'>
             Full-stack applications with automation and AI integration
           </p>

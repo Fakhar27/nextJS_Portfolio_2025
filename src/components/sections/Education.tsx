@@ -1,8 +1,10 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { motion } from 'framer-motion';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 interface EducationVisibilityEvent extends CustomEvent {
   detail: {
@@ -12,7 +14,7 @@ interface EducationVisibilityEvent extends CustomEvent {
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Education(): JSX.Element {
+export default function Education() {
   const containerRef = useRef<HTMLElement | null>(null);
   const pathRef = useRef<SVGPathElement | null>(null);
   const ballRef = useRef<SVGCircleElement | null>(null);
@@ -128,12 +130,17 @@ export default function Education(): JSX.Element {
 
       window.addEventListener('educationVisible', handleVisibility);
 
-      return () => {
-        window.removeEventListener('educationVisible', handleVisibility);
-      };
     };
 
     initializeAnimations();
+
+    // return () => {
+    //   if (tl) {
+    //     tl.kill();
+    //   }
+    //   ScrollTrigger.getAll().forEach(t => t.kill());
+    //   window.removeEventListener('educationVisible', handleVisibility);
+    // };
 
     return () => {
       if (tl) {
@@ -143,23 +150,23 @@ export default function Education(): JSX.Element {
     };
   }, []);
 
-  const strongText = {
-    initial: { scale: 1 },
-    hover: { 
-      scale: 1.2,
-      transition: {
-        duration: 0.2
-      }
-    },
-    tap: {
-      scale: 0.95,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
-    }
-  };
+  // const strongText = {
+  //   initial: { scale: 1 },
+  //   hover: { 
+  //     scale: 1.2,
+  //     transition: {
+  //       duration: 0.2
+  //     }
+  //   },
+  //   tap: {
+  //     scale: 0.95,
+  //     transition: {
+  //       type: "spring",
+  //       stiffness: 400,
+  //       damping: 10
+  //     }
+  //   }
+  // };
 
   return (
     <section 
@@ -248,6 +255,17 @@ export default function Education(): JSX.Element {
             >
               2021
             </text>
+            {/* <text
+  x="600"
+  y="200"
+  className="fill-transparent font-hackdaddy text-[10rem] font-bold"
+  fill="url(#pathGradient)"
+  textAnchor="middle"
+  alignmentBaseline="middle"
+  filter="url(#glow)"
+>
+  2021
+</text> */}
 
             <g>
               <circle
@@ -261,13 +279,14 @@ export default function Education(): JSX.Element {
               <text
                 x="500"
                 y="3800"
-                className="fill-transparent"
+                className="fill-transparent font-hackdaddy text-[10rem] font-bold"
                 style={{ 
                   fontSize: '10rem', 
                   fontFamily: 'Hackdaddy',
                   fontWeight: 'bold',
                   fill: 'url(#pathGradient)'
                 }}
+                // fill="url(#pathGradient)"
                 textAnchor="middle"
                 alignmentBaseline="middle"
                 filter="url(#glow)"
@@ -280,25 +299,23 @@ export default function Education(): JSX.Element {
 
         <div className="w-1/2 flex flex-col items-center justify-center px-2 sm:px-8">
           <div ref={logoRef} className="w-full flex items-center justify-center max-w-xs mb-8">
-            <img 
-              src="/logo/nust-seeklogo.svg" 
-              alt="NUST Logo" 
-              className="w-32 h-32 object-contain"
-            />
+          <Image 
+  src="/logo/nust-seeklogo.svg" 
+  alt="NUST Logo" 
+  width={128}
+  height={128}
+  className="object-contain"
+/>
           </div>
 
           <div ref={contentRef} className="max-w-xs">
-            <p ref={firstTextRef} className="font-wilson text-xs sm:text-sm md:text-lg text-blue-400 mb-1">
-              I am pursuing my degree in <motion.strong initial="initial"
-          whileHover="hover"
-          variants={strongText} className='text-emerald-100'>Software Engineering</motion.strong> at the <a className='text-emerald-100' href="https://nust.edu.pk/">National University 
-              of Sciences & Technology (NUST)</a>, often referred to as the 'Harvard of Pakistan' 
-              for its academic excellence and rigorous standards. Maintaining a 3.50 CGPA
-            </p>
+          <p ref={firstTextRef} className="font-wilson text-xs sm:text-sm md:text-lg text-blue-400 mb-1">
+  I am pursuing my degree in <strong className="text-emerald-100">Software Engineering</strong> at the <a className="text-emerald-100" href="https://nust.edu.pk/">National University 
+  of Sciences & Technology (NUST)</a>, often referred to as the &apos;Harvard of Pakistan&apos; 
+  for its academic excellence and rigorous standards. Maintaining a 3.50 CGPA
+</p>
             <p ref={secondTextRef} className="font-wilson text-xs sm:text-sm md:text-lg text-blue-400 mb-4">
-              Ranked as the top university in Pakistan and <motion.strong initial="initial"
-          whileHover="hover"
-          variants={strongText} className='text-emerald-100'>#144 globally</motion.strong> in Engineering & 
+              Ranked as the top university in Pakistan and <strong className='text-emerald-100'>#144 globally</strong> in Engineering & 
               Technology (QS 2024), NUST provides a world-class education that fosters 
               innovation, cutting-edge research, and technological advancement.
             </p>

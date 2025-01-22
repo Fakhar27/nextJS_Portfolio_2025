@@ -94,3 +94,24 @@ rgba(157, 23, 77, 0.5)    /* pink-800 */
 }
 
 
+
+
+
+
+
+
+
+
+.bg-gradient-text {
+  background: linear-gradient(to right, #60A5FA 50%, #1F2937 50%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-shine {
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
