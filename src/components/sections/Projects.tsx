@@ -348,7 +348,7 @@ export default function Projects() {
           <div className="w-2 shrink-0" aria-hidden="true" />
         </div>
         {/* Gradient line at the bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-pink-500/40" />
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-950" />
       </div>
     </section>
   );

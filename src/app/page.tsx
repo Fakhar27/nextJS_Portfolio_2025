@@ -549,6 +549,7 @@ import Projects from '@/components/sections/Projects';
 import Education from '@/components/sections/Education';
 import Bio from '@/components/sections/Bio';
 import CustomCursor from '@/components/CustomCursor';
+import Header from '@/components/Header';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -666,36 +667,37 @@ export default function Home() {
 
   return (
     <>
-    <CustomCursor />
-    <main className="relative overflow-x-hidden">
-      <div className="relative" ref={containerRef}>
-        <div className="relative z-0 min-h-screen">
-          <Hero />
+      <CustomCursor />
+      <Header />
+      <main className="relative overflow-x-hidden">
+        <div className="relative" ref={containerRef}>
+          <div className="relative z-0 min-h-screen">
+            <Hero />
+          </div>
+          <div 
+            ref={experienceRef} 
+            className="z-10 min-h-screen bg-slate-950"
+          >
+            <Experience />
+          </div>
         </div>
-        <div 
-          ref={experienceRef} 
-          className="z-10 min-h-screen bg-slate-950"
-        >
-          <Experience />
+        <div ref={bioContainerRef} className="relative bg-slate-950">
+          <Bio />
         </div>
-      </div>
-      <div ref={bioContainerRef} className="relative bg-slate-950">
-        <Bio />
-      </div>
-      <div ref={projectsContainerRef} className="relative bg-slate-950">
-        <div 
-          ref={projectsSectionRef}
-          className="flex items-start bg-slate-950"
-        >
-          <Projects />
+        <div ref={projectsContainerRef} className="relative bg-slate-950">
+          <div 
+            ref={projectsSectionRef}
+            className="flex items-start bg-slate-950"
+          >
+            <Projects />
+          </div>
         </div>
-      </div>
-      <div ref={educationContainerRef}>
-        <div className="min-h-screen bg-slate-950">
-          <Education />
+        <div ref={educationContainerRef}>
+          <div className="min-h-screen bg-slate-950">
+            <Education />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
     </>
   );
 }
